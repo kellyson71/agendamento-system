@@ -420,9 +420,9 @@
             <div class="auth-section">
                 <h3>🔐 Autenticação</h3>
                 <p>Alguns endpoints requerem autenticação via API Key. Use uma das seguintes formas:</p>
-                <p><strong>Header:</strong> X-API-Key: agendamento_api_key_2024</p>
-                <p><strong>Query Parameter:</strong> ?api_key=agendamento_api_key_2024</p>
                 <p><strong>Authorization Header:</strong> Bearer agendamento_api_key_2024</p>
+                <p><strong>Query Parameter:</strong> ?api_key=agendamento_api_key_2024</p>
+                <p><strong>Header X-API-Key:</strong> Não funciona em produção</p>
             </div>
 
             <div class="section">
@@ -987,7 +987,7 @@ Content-Type: application/json
             };
 
             if (requiresAuth && apiKey) {
-                options.headers['X-API-Key'] = apiKey;
+                options.headers['Authorization'] = 'Bearer ' + apiKey;
             }
 
             if (data) {
