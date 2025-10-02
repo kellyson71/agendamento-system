@@ -1,0 +1,39 @@
+# Arquivos de configuração sensíveis
+config.env
+.env
+
+# Logs
+*.log
+logs/
+
+# Arquivos temporários
+*.tmp
+*.temp
+
+# Cache
+cache/
+tmp/
+
+# Arquivos do sistema
+.DS_Store
+Thumbs.db
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Node modules (se houver)
+node_modules/
+
+# Composer (se houver)
+vendor/
+
+# Arquivos de backup
+*.bak
+*.backup
+
+# Arquivos de teste
+test_results/
+screenshots/
