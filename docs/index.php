@@ -220,6 +220,182 @@
             padding: 2rem 0;
             margin-top: 3rem;
         }
+
+        .auth-panel {
+            background: #e3f2fd;
+            border: 1px solid #2196f3;
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin-bottom: 2rem;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .auth-panel h3 {
+            color: #1976d2;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .auth-controls {
+            display: flex;
+            gap: 1rem;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .auth-input {
+            padding: 0.5rem;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-size: 0.9rem;
+            min-width: 200px;
+        }
+
+        .auth-button {
+            background: #2196f3;
+            color: white;
+            border: none;
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 0.9rem;
+            transition: background 0.3s;
+        }
+
+        .auth-button:hover {
+            background: #1976d2;
+        }
+
+        .auth-status {
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            font-size: 0.9rem;
+            font-weight: bold;
+        }
+
+        .auth-status.authenticated {
+            background: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+        }
+
+        .auth-status.not-authenticated {
+            background: #f8d7da;
+            color: #721c24;
+            border: 1px solid #f5c6cb;
+        }
+
+        .test-panel {
+            background: #f8f9fa;
+            border: 1px solid #e9ecef;
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin: 1rem 0;
+        }
+
+        .test-panel h4 {
+            color: #495057;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .test-controls {
+            display: flex;
+            gap: 1rem;
+            align-items: center;
+            flex-wrap: wrap;
+            margin-bottom: 1rem;
+        }
+
+        .test-input {
+            padding: 0.5rem;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-size: 0.9rem;
+            min-width: 150px;
+        }
+
+        .test-button {
+            background: #28a745;
+            color: white;
+            border: none;
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 0.9rem;
+            transition: background 0.3s;
+        }
+
+        .test-button:hover {
+            background: #218838;
+        }
+
+        .test-button:disabled {
+            background: #6c757d;
+            cursor: not-allowed;
+        }
+
+        .test-result {
+            background: #2d3748;
+            color: #e2e8f0;
+            padding: 1rem;
+            border-radius: 4px;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9rem;
+            overflow-x: auto;
+            margin-top: 1rem;
+            max-height: 300px;
+            overflow-y: auto;
+        }
+
+        .test-result.success {
+            border-left: 4px solid #28a745;
+        }
+
+        .test-result.error {
+            border-left: 4px solid #dc3545;
+        }
+
+        .json-editor {
+            width: 100%;
+            min-height: 100px;
+            padding: 0.5rem;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9rem;
+            resize: vertical;
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        .loading {
+            opacity: 0.6;
+            pointer-events: none;
+        }
+
+        .spinner {
+            display: inline-block;
+            width: 16px;
+            height: 16px;
+            border: 2px solid #f3f3f3;
+            border-top: 2px solid #2196f3;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
     </style>
 </head>
 <body>
@@ -232,6 +408,15 @@
 
     <div class="main-content">
         <div class="container">
+            <div class="auth-panel">
+                <h3>🔐 Painel de Autenticação e Testes</h3>
+                <div class="auth-controls">
+                    <input type="text" id="apiKey" class="auth-input" placeholder="Digite sua API Key" value="agendamento_api_key_2024">
+                    <button id="authButton" class="auth-button">Autenticar</button>
+                    <div id="authStatus" class="auth-status not-authenticated">Não autenticado</div>
+                </div>
+            </div>
+
             <div class="auth-section">
                 <h3>🔐 Autenticação</h3>
                 <p>Alguns endpoints requerem autenticação via API Key. Use uma das seguintes formas:</p>
@@ -254,6 +439,15 @@
                     <div class="endpoint-description">
                         Lista todos os serviços disponíveis para agendamento.
                     </div>
+                    
+                    <div class="test-panel">
+                        <h4>🧪 Testar Endpoint</h4>
+                        <div class="test-controls">
+                            <button class="test-button" onclick="testEndpoint('GET', '/api/services')">Testar GET /api/services</button>
+                        </div>
+                        <div id="result-services" class="test-result hidden"></div>
+                    </div>
+
                     <div class="response">
                         <h4>Resposta de Sucesso (200)</h4>
                         <div class="code">
@@ -295,6 +489,17 @@
                             <span class="parameter-description">Data no formato YYYY-MM-DD</span>
                         </div>
                     </div>
+                    
+                    <div class="test-panel">
+                        <h4>🧪 Testar Endpoint</h4>
+                        <div class="test-controls">
+                            <input type="number" id="slots-service-id" class="test-input" placeholder="Service ID" value="1">
+                            <input type="date" id="slots-date" class="test-input" value="">
+                            <button class="test-button" onclick="testSlots()">Testar GET /api/slots</button>
+                        </div>
+                        <div id="result-slots" class="test-result hidden"></div>
+                    </div>
+
                     <div class="example">
                         <h4>Exemplo de Requisição</h4>
                         <div class="code">GET /api/slots?service_id=1&date=2024-01-15</div>
@@ -382,6 +587,26 @@
                             <span class="parameter-description">Observações (opcional)</span>
                         </div>
                     </div>
+                    
+                    <div class="test-panel">
+                        <h4>🧪 Testar Endpoint</h4>
+                        <div class="test-controls">
+                            <textarea id="appointment-json" class="json-editor" placeholder="JSON do agendamento">{
+  "service_id": 1,
+  "date": "",
+  "time": "09:00",
+  "client_name": "João Silva Teste",
+  "client_phone": "(11) 99999-1111",
+  "client_email": "joao@teste.com",
+  "professional_id": 1,
+  "is_online": true,
+  "notes": "Teste via documentação"
+}</textarea>
+                            <button class="test-button" onclick="testAppointment()">Testar POST /api/appointments</button>
+                        </div>
+                        <div id="result-appointment" class="test-result hidden"></div>
+                    </div>
+
                     <div class="example">
                         <h4>Exemplo de Requisição</h4>
                         <div class="code">
@@ -507,6 +732,17 @@ Content-Type: application/json
                             <span class="parameter-description">Data final no formato YYYY-MM-DD (opcional)</span>
                         </div>
                     </div>
+                    
+                    <div class="test-panel">
+                        <h4>🧪 Testar Endpoint (Requer Autenticação)</h4>
+                        <div class="test-controls">
+                            <input type="date" id="schedule-start-date" class="test-input" placeholder="Data inicial">
+                            <input type="date" id="schedule-end-date" class="test-input" placeholder="Data final">
+                            <button class="test-button" onclick="testAdminSchedule()">Testar GET /api/admin/schedule</button>
+                        </div>
+                        <div id="result-schedule" class="test-result hidden"></div>
+                    </div>
+
                     <div class="response">
                         <h4>Resposta de Sucesso (200)</h4>
                         <div class="code">
@@ -540,6 +776,15 @@ Content-Type: application/json
                     <div class="endpoint-description">
                         Lista todos os profissionais ativos.
                     </div>
+                    
+                    <div class="test-panel">
+                        <h4>🧪 Testar Endpoint (Requer Autenticação)</h4>
+                        <div class="test-controls">
+                            <button class="test-button" onclick="testAdminProfessionals()">Testar GET /api/admin/professionals</button>
+                        </div>
+                        <div id="result-professionals" class="test-result hidden"></div>
+                    </div>
+
                     <div class="response">
                         <h4>Resposta de Sucesso (200)</h4>
                         <div class="code">
@@ -569,6 +814,15 @@ Content-Type: application/json
                     <div class="endpoint-description">
                         Obtém as configurações gerais do sistema.
                     </div>
+                    
+                    <div class="test-panel">
+                        <h4>🧪 Testar Endpoint (Requer Autenticação)</h4>
+                        <div class="test-controls">
+                            <button class="test-button" onclick="testAdminSettings()">Testar GET /api/admin/settings</button>
+                        </div>
+                        <div id="result-settings" class="test-result hidden"></div>
+                    </div>
+
                     <div class="response">
                         <h4>Resposta de Sucesso (200)</h4>
                         <div class="code">
@@ -679,5 +933,186 @@ Content-Type: application/json
             <p>&copy; 2024 Sistema de Agendamento - API Documentation</p>
         </div>
     </div>
+
+    <script>
+        let isAuthenticated = false;
+        let apiKey = '';
+
+        // Inicialização
+        document.addEventListener('DOMContentLoaded', function() {
+            // Definir data padrão para amanhã
+            const tomorrow = new Date();
+            tomorrow.setDate(tomorrow.getDate() + 1);
+            document.getElementById('slots-date').value = tomorrow.toISOString().split('T')[0];
+            
+            // Definir data padrão para agendamento
+            document.getElementById('appointment-json').value = document.getElementById('appointment-json').value.replace('"date": ""', `"date": "${tomorrow.toISOString().split('T')[0]}"`);
+        });
+
+        // Autenticação
+        document.getElementById('authButton').addEventListener('click', function() {
+            apiKey = document.getElementById('apiKey').value.trim();
+            if (apiKey) {
+                isAuthenticated = true;
+                updateAuthStatus();
+                showNotification('Autenticado com sucesso!', 'success');
+            } else {
+                showNotification('Digite uma API Key válida', 'error');
+            }
+        });
+
+        function updateAuthStatus() {
+            const status = document.getElementById('authStatus');
+            if (isAuthenticated) {
+                status.textContent = 'Autenticado';
+                status.className = 'auth-status authenticated';
+            } else {
+                status.textContent = 'Não autenticado';
+                status.className = 'auth-status not-authenticated';
+            }
+        }
+
+        // Função genérica para fazer requisições
+        async function makeRequest(method, url, data = null, requiresAuth = false) {
+            if (requiresAuth && !isAuthenticated) {
+                showNotification('Este endpoint requer autenticação. Configure sua API Key primeiro.', 'error');
+                return null;
+            }
+
+            const options = {
+                method: method,
+                headers: {
+                    'Content-Type': 'application/json',
+                }
+            };
+
+            if (requiresAuth && apiKey) {
+                options.headers['X-API-Key'] = apiKey;
+            }
+
+            if (data) {
+                options.body = JSON.stringify(data);
+            }
+
+            try {
+                const response = await fetch(url, options);
+                const result = await response.json();
+                return {
+                    status: response.status,
+                    data: result
+                };
+            } catch (error) {
+                return {
+                    status: 0,
+                    data: { error: 'Erro de conexão: ' + error.message }
+                };
+            }
+        }
+
+        // Função para mostrar resultados
+        function showResult(elementId, result) {
+            const element = document.getElementById(elementId);
+            element.classList.remove('hidden');
+            
+            if (result.status >= 200 && result.status < 300) {
+                element.className = 'test-result success';
+            } else {
+                element.className = 'test-result error';
+            }
+            
+            element.innerHTML = `<strong>Status: ${result.status}</strong>\n${JSON.stringify(result.data, null, 2)}`;
+        }
+
+        // Função para mostrar notificações
+        function showNotification(message, type = 'info') {
+            const notification = document.createElement('div');
+            notification.style.cssText = `
+                position: fixed;
+                top: 20px;
+                right: 20px;
+                padding: 1rem;
+                border-radius: 4px;
+                color: white;
+                font-weight: bold;
+                z-index: 1000;
+                max-width: 300px;
+                ${type === 'success' ? 'background: #28a745;' : type === 'error' ? 'background: #dc3545;' : 'background: #17a2b8;'}
+            `;
+            notification.textContent = message;
+            document.body.appendChild(notification);
+            
+            setTimeout(() => {
+                notification.remove();
+            }, 3000);
+        }
+
+        // Testes dos endpoints
+        async function testEndpoint(method, endpoint) {
+            const result = await makeRequest(method, endpoint);
+            if (result) {
+                showResult('result-services', result);
+            }
+        }
+
+        async function testSlots() {
+            const serviceId = document.getElementById('slots-service-id').value;
+            const date = document.getElementById('slots-date').value;
+            
+            if (!serviceId || !date) {
+                showNotification('Preencha Service ID e Data', 'error');
+                return;
+            }
+            
+            const url = `/api/slots?service_id=${serviceId}&date=${date}`;
+            const result = await makeRequest('GET', url);
+            if (result) {
+                showResult('result-slots', result);
+            }
+        }
+
+        async function testAppointment() {
+            const jsonText = document.getElementById('appointment-json').value;
+            
+            try {
+                const data = JSON.parse(jsonText);
+                const result = await makeRequest('POST', '/api/appointments', data);
+                if (result) {
+                    showResult('result-appointment', result);
+                }
+            } catch (error) {
+                showNotification('JSON inválido: ' + error.message, 'error');
+            }
+        }
+
+        async function testAdminSchedule() {
+            const startDate = document.getElementById('schedule-start-date').value;
+            const endDate = document.getElementById('schedule-end-date').value;
+            
+            let url = '/api/admin/schedule';
+            const params = [];
+            if (startDate) params.push(`start_date=${startDate}`);
+            if (endDate) params.push(`end_date=${endDate}`);
+            if (params.length > 0) url += '?' + params.join('&');
+            
+            const result = await makeRequest('GET', url, null, true);
+            if (result) {
+                showResult('result-schedule', result);
+            }
+        }
+
+        async function testAdminProfessionals() {
+            const result = await makeRequest('GET', '/api/admin/professionals', null, true);
+            if (result) {
+                showResult('result-professionals', result);
+            }
+        }
+
+        async function testAdminSettings() {
+            const result = await makeRequest('GET', '/api/admin/settings', null, true);
+            if (result) {
+                showResult('result-settings', result);
+            }
+        }
+    </script>
 </body>
 </html>
