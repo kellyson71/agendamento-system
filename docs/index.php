@@ -12,33 +12,36 @@
         }
 
         body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-            background: #f8f9fa;
-            color: #333;
-            line-height: 1.6;
+            font-family: 'SF Mono', 'Monaco', 'Inconsolata', 'Roboto Mono', monospace;
+            background: #ffffff;
+            color: #333333;
+            line-height: 1.5;
+            font-size: 14px;
         }
 
         .header {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
+            background: #ffffff;
+            border-bottom: 1px solid #e1e5e9;
             padding: 2rem 0;
             text-align: center;
         }
 
         .container {
-            max-width: 1200px;
+            max-width: 1000px;
             margin: 0 auto;
-            padding: 0 20px;
+            padding: 0 2rem;
         }
 
         .header h1 {
-            font-size: 2.5rem;
+            font-size: 1.8rem;
+            font-weight: 600;
             margin-bottom: 0.5rem;
+            color: #24292e;
         }
 
         .header p {
-            font-size: 1.1rem;
-            opacity: 0.9;
+            font-size: 0.9rem;
+            color: #586069;
         }
 
         .main-content {
@@ -46,75 +49,91 @@
         }
 
         .section {
-            background: white;
-            margin-bottom: 2rem;
-            border-radius: 8px;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-            overflow: hidden;
+            margin-bottom: 3rem;
         }
 
         .section-header {
-            background: #f8f9fa;
-            padding: 1rem 1.5rem;
-            border-bottom: 1px solid #e9ecef;
+            margin-bottom: 1.5rem;
         }
 
         .section-title {
-            font-size: 1.5rem;
-            color: #495057;
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: #24292e;
             margin-bottom: 0.5rem;
         }
 
         .section-description {
-            color: #6c757d;
+            color: #586069;
+            font-size: 0.9rem;
         }
 
         .endpoint {
-            border-bottom: 1px solid #e9ecef;
-            padding: 1.5rem;
-        }
-
-        .endpoint:last-child {
-            border-bottom: none;
+            border: 1px solid #e1e5e9;
+            margin-bottom: 1.5rem;
+            background: #ffffff;
         }
 
         .endpoint-header {
             display: flex;
             align-items: center;
-            margin-bottom: 1rem;
+            padding: 1rem;
+            border-bottom: 1px solid #e1e5e9;
+            background: #f6f8fa;
         }
 
         .method {
-            padding: 0.25rem 0.75rem;
-            border-radius: 4px;
-            font-weight: bold;
-            font-size: 0.875rem;
+            padding: 0.25rem 0.5rem;
+            font-size: 0.75rem;
+            font-weight: 600;
             margin-right: 1rem;
+            border: 1px solid;
         }
 
-        .method.get { background: #28a745; color: white; }
-        .method.post { background: #007bff; color: white; }
-        .method.put { background: #ffc107; color: #212529; }
-        .method.delete { background: #dc3545; color: white; }
+        .method.get { 
+            background: #ffffff; 
+            color: #0366d6; 
+            border-color: #0366d6;
+        }
+        .method.post { 
+            background: #ffffff; 
+            color: #28a745; 
+            border-color: #28a745;
+        }
+        .method.put { 
+            background: #ffffff; 
+            color: #f66a0a; 
+            border-color: #f66a0a;
+        }
+        .method.delete { 
+            background: #ffffff; 
+            color: #d73a49; 
+            border-color: #d73a49;
+        }
 
         .endpoint-path {
-            font-family: 'Courier New', monospace;
-            font-size: 1.1rem;
-            color: #495057;
+            font-size: 0.9rem;
+            color: #24292e;
+            font-weight: 500;
         }
 
         .auth-badge {
-            background: #6f42c1;
-            color: white;
+            background: #ffffff;
+            color: #6f42c1;
+            border: 1px solid #6f42c1;
             padding: 0.25rem 0.5rem;
-            border-radius: 4px;
-            font-size: 0.75rem;
+            font-size: 0.7rem;
             margin-left: 1rem;
+        }
+
+        .endpoint-content {
+            padding: 1rem;
         }
 
         .endpoint-description {
             margin-bottom: 1rem;
-            color: #6c757d;
+            color: #586069;
+            font-size: 0.9rem;
         }
 
         .parameters {
@@ -123,52 +142,39 @@
 
         .parameters h4 {
             margin-bottom: 0.5rem;
-            color: #495057;
+            color: #24292e;
+            font-size: 0.9rem;
+            font-weight: 600;
         }
 
         .parameter {
             display: flex;
-            margin-bottom: 0.5rem;
-            font-family: 'Courier New', monospace;
-            font-size: 0.9rem;
+            margin-bottom: 0.25rem;
+            font-size: 0.8rem;
         }
 
         .parameter-name {
-            font-weight: bold;
-            color: #495057;
-            min-width: 120px;
+            font-weight: 600;
+            color: #24292e;
+            min-width: 100px;
         }
 
         .parameter-type {
-            color: #6c757d;
+            color: #6f42c1;
             margin: 0 0.5rem;
         }
 
         .parameter-description {
-            color: #6c757d;
-        }
-
-        .example {
-            background: #f8f9fa;
-            border: 1px solid #e9ecef;
-            border-radius: 4px;
-            padding: 1rem;
-            margin-top: 1rem;
-        }
-
-        .example h4 {
-            margin-bottom: 0.5rem;
-            color: #495057;
+            color: #586069;
         }
 
         .code {
-            background: #2d3748;
-            color: #e2e8f0;
+            background: #f6f8fa;
+            border: 1px solid #e1e5e9;
             padding: 1rem;
-            border-radius: 4px;
-            font-family: 'Courier New', monospace;
-            font-size: 0.9rem;
+            font-size: 0.8rem;
             overflow-x: auto;
+            margin: 0.5rem 0;
         }
 
         .response {
@@ -177,55 +183,80 @@
 
         .response h4 {
             margin-bottom: 0.5rem;
-            color: #495057;
+            color: #24292e;
+            font-size: 0.9rem;
+            font-weight: 600;
         }
 
         .status-code {
             display: inline-block;
-            padding: 0.25rem 0.5rem;
-            border-radius: 4px;
-            font-size: 0.875rem;
-            font-weight: bold;
+            padding: 0.2rem 0.4rem;
+            font-size: 0.7rem;
+            font-weight: 600;
             margin-right: 0.5rem;
+            border: 1px solid;
         }
 
-        .status-200 { background: #d4edda; color: #155724; }
-        .status-400 { background: #f8d7da; color: #721c24; }
-        .status-401 { background: #f8d7da; color: #721c24; }
-        .status-404 { background: #f8d7da; color: #721c24; }
-        .status-500 { background: #f8d7da; color: #721c24; }
+        .status-200 { 
+            background: #ffffff; 
+            color: #28a745; 
+            border-color: #28a745;
+        }
+        .status-400 { 
+            background: #ffffff; 
+            color: #d73a49; 
+            border-color: #d73a49;
+        }
+        .status-401 { 
+            background: #ffffff; 
+            color: #d73a49; 
+            border-color: #d73a49;
+        }
+        .status-404 { 
+            background: #ffffff; 
+            color: #d73a49; 
+            border-color: #d73a49;
+        }
+        .status-500 { 
+            background: #ffffff; 
+            color: #d73a49; 
+            border-color: #d73a49;
+        }
 
         .auth-section {
-            background: #fff3cd;
-            border: 1px solid #ffeaa7;
-            border-radius: 4px;
+            background: #f6f8fa;
+            border: 1px solid #e1e5e9;
             padding: 1rem;
             margin-bottom: 2rem;
         }
 
         .auth-section h3 {
-            color: #856404;
+            color: #24292e;
             margin-bottom: 0.5rem;
+            font-size: 0.9rem;
+            font-weight: 600;
         }
 
         .auth-section p {
-            color: #856404;
+            color: #586069;
             margin-bottom: 0.5rem;
+            font-size: 0.8rem;
         }
 
         .footer {
-            background: #495057;
-            color: white;
+            background: #f6f8fa;
+            border-top: 1px solid #e1e5e9;
             text-align: center;
             padding: 2rem 0;
             margin-top: 3rem;
+            color: #586069;
+            font-size: 0.8rem;
         }
 
         .auth-panel {
-            background: #e3f2fd;
-            border: 1px solid #2196f3;
-            border-radius: 8px;
-            padding: 1.5rem;
+            background: #f6f8fa;
+            border: 1px solid #e1e5e9;
+            padding: 1rem;
             margin-bottom: 2rem;
             position: sticky;
             top: 0;
@@ -233,11 +264,10 @@
         }
 
         .auth-panel h3 {
-            color: #1976d2;
+            color: #24292e;
             margin-bottom: 1rem;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
+            font-size: 0.9rem;
+            font-weight: 600;
         }
 
         .auth-controls {
@@ -249,60 +279,57 @@
 
         .auth-input {
             padding: 0.5rem;
-            border: 1px solid #ccc;
-            border-radius: 4px;
-            font-size: 0.9rem;
+            border: 1px solid #e1e5e9;
+            font-size: 0.8rem;
             min-width: 200px;
+            background: #ffffff;
         }
 
         .auth-button {
-            background: #2196f3;
-            color: white;
-            border: none;
+            background: #ffffff;
+            color: #24292e;
+            border: 1px solid #e1e5e9;
             padding: 0.5rem 1rem;
-            border-radius: 4px;
             cursor: pointer;
-            font-size: 0.9rem;
-            transition: background 0.3s;
+            font-size: 0.8rem;
+            font-weight: 500;
         }
 
         .auth-button:hover {
-            background: #1976d2;
+            background: #f6f8fa;
         }
 
         .auth-status {
             padding: 0.5rem 1rem;
-            border-radius: 4px;
-            font-size: 0.9rem;
-            font-weight: bold;
+            font-size: 0.8rem;
+            font-weight: 600;
+            border: 1px solid;
         }
 
         .auth-status.authenticated {
-            background: #d4edda;
-            color: #155724;
-            border: 1px solid #c3e6cb;
+            background: #ffffff;
+            color: #28a745;
+            border-color: #28a745;
         }
 
         .auth-status.not-authenticated {
-            background: #f8d7da;
-            color: #721c24;
-            border: 1px solid #f5c6cb;
+            background: #ffffff;
+            color: #d73a49;
+            border-color: #d73a49;
         }
 
         .test-panel {
-            background: #f8f9fa;
-            border: 1px solid #e9ecef;
-            border-radius: 8px;
-            padding: 1.5rem;
+            background: #f6f8fa;
+            border: 1px solid #e1e5e9;
+            padding: 1rem;
             margin: 1rem 0;
         }
 
         .test-panel h4 {
-            color: #495057;
+            color: #24292e;
             margin-bottom: 1rem;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
+            font-size: 0.9rem;
+            font-weight: 600;
         }
 
         .test-controls {
@@ -315,62 +342,60 @@
 
         .test-input {
             padding: 0.5rem;
-            border: 1px solid #ccc;
-            border-radius: 4px;
-            font-size: 0.9rem;
+            border: 1px solid #e1e5e9;
+            font-size: 0.8rem;
             min-width: 150px;
+            background: #ffffff;
         }
 
         .test-button {
-            background: #28a745;
-            color: white;
-            border: none;
+            background: #ffffff;
+            color: #24292e;
+            border: 1px solid #e1e5e9;
             padding: 0.5rem 1rem;
-            border-radius: 4px;
             cursor: pointer;
-            font-size: 0.9rem;
-            transition: background 0.3s;
+            font-size: 0.8rem;
+            font-weight: 500;
         }
 
         .test-button:hover {
-            background: #218838;
+            background: #f6f8fa;
         }
 
         .test-button:disabled {
-            background: #6c757d;
+            background: #f6f8fa;
+            color: #586069;
             cursor: not-allowed;
         }
 
         .test-result {
-            background: #2d3748;
-            color: #e2e8f0;
+            background: #24292e;
+            color: #f6f8fa;
             padding: 1rem;
-            border-radius: 4px;
-            font-family: 'Courier New', monospace;
-            font-size: 0.9rem;
+            font-size: 0.8rem;
             overflow-x: auto;
             margin-top: 1rem;
             max-height: 300px;
             overflow-y: auto;
+            border: 1px solid #e1e5e9;
         }
 
         .test-result.success {
-            border-left: 4px solid #28a745;
+            border-left: 3px solid #28a745;
         }
 
         .test-result.error {
-            border-left: 4px solid #dc3545;
+            border-left: 3px solid #d73a49;
         }
 
         .json-editor {
             width: 100%;
             min-height: 100px;
             padding: 0.5rem;
-            border: 1px solid #ccc;
-            border-radius: 4px;
-            font-family: 'Courier New', monospace;
-            font-size: 0.9rem;
+            border: 1px solid #e1e5e9;
+            font-size: 0.8rem;
             resize: vertical;
+            background: #ffffff;
         }
 
         .hidden {
@@ -384,10 +409,10 @@
 
         .spinner {
             display: inline-block;
-            width: 16px;
-            height: 16px;
-            border: 2px solid #f3f3f3;
-            border-top: 2px solid #2196f3;
+            width: 12px;
+            height: 12px;
+            border: 1px solid #e1e5e9;
+            border-top: 1px solid #24292e;
             border-radius: 50%;
             animation: spin 1s linear infinite;
         }
@@ -395,6 +420,19 @@
         @keyframes spin {
             0% { transform: rotate(0deg); }
             100% { transform: rotate(360deg); }
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            font-weight: 600;
+        }
+
+        a {
+            color: #0366d6;
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
         }
     </style>
 </head>
@@ -409,7 +447,7 @@
     <div class="main-content">
         <div class="container">
             <div class="auth-panel">
-                <h3>🔐 Painel de Autenticação e Testes</h3>
+                <h3>Painel de Autenticação e Testes</h3>
                 <div class="auth-controls">
                     <input type="text" id="apiKey" class="auth-input" placeholder="Digite sua API Key" value="agendamento_api_key_2024">
                     <button id="authButton" class="auth-button">Autenticar</button>
@@ -418,16 +456,15 @@
             </div>
 
             <div class="auth-section">
-                <h3>🔐 Autenticação</h3>
-                <p>Alguns endpoints requerem autenticação via API Key. Use uma das seguintes formas:</p>
-                <p><strong>Authorization Header:</strong> Bearer agendamento_api_key_2024</p>
-                <p><strong>Query Parameter:</strong> ?api_key=agendamento_api_key_2024</p>
-                <p><strong>Header X-API-Key:</strong> Não funciona em produção</p>
+                <h3>Autenticação</h3>
+                <p>Endpoints administrativos requerem API Key. Formas suportadas:</p>
+                <p><strong>Authorization:</strong> Bearer agendamento_api_key_2024</p>
+                <p><strong>Query:</strong> ?api_key=agendamento_api_key_2024</p>
             </div>
 
             <div class="section">
                 <div class="section-header">
-                    <h2 class="section-title">📋 Catálogo e Disponibilidade</h2>
+                    <h2 class="section-title">Catálogo e Disponibilidade</h2>
                     <p class="section-description">Endpoints públicos para consulta de serviços e horários disponíveis</p>
                 </div>
 
@@ -441,7 +478,7 @@
                     </div>
                     
                     <div class="test-panel">
-                        <h4>🧪 Testar Endpoint</h4>
+                        <h4>Testar Endpoint</h4>
                         <div class="test-controls">
                             <button class="test-button" onclick="testEndpoint('GET', '/api/services')">Testar GET /api/services</button>
                         </div>
@@ -491,7 +528,7 @@
                     </div>
                     
                     <div class="test-panel">
-                        <h4>🧪 Testar Endpoint</h4>
+                        <h4>Testar Endpoint</h4>
                         <div class="test-controls">
                             <input type="number" id="slots-service-id" class="test-input" placeholder="Service ID" value="1">
                             <input type="date" id="slots-date" class="test-input" value="">
@@ -527,7 +564,7 @@
 
             <div class="section">
                 <div class="section-header">
-                    <h2 class="section-title">📅 Agendamentos</h2>
+                    <h2 class="section-title">Agendamentos</h2>
                     <p class="section-description">Gerenciamento de agendamentos - criação, cancelamento e atualização de status</p>
                 </div>
 
@@ -589,7 +626,7 @@
                     </div>
                     
                     <div class="test-panel">
-                        <h4>🧪 Testar Endpoint</h4>
+                        <h4>Testar Endpoint</h4>
                         <div class="test-controls">
                             <textarea id="appointment-json" class="json-editor" placeholder="JSON do agendamento">{
   "service_id": 1,
@@ -706,7 +743,7 @@ Content-Type: application/json
 
             <div class="section">
                 <div class="section-header">
-                    <h2 class="section-title">⚙️ Administração</h2>
+                    <h2 class="section-title">Administração</h2>
                     <p class="section-description">Endpoints administrativos para gerenciamento da agenda e configurações</p>
                 </div>
 
@@ -734,7 +771,7 @@ Content-Type: application/json
                     </div>
                     
                     <div class="test-panel">
-                        <h4>🧪 Testar Endpoint (Requer Autenticação)</h4>
+                        <h4>Testar Endpoint (Requer Autenticação)</h4>
                         <div class="test-controls">
                             <input type="date" id="schedule-start-date" class="test-input" placeholder="Data inicial">
                             <input type="date" id="schedule-end-date" class="test-input" placeholder="Data final">
@@ -778,7 +815,7 @@ Content-Type: application/json
                     </div>
                     
                     <div class="test-panel">
-                        <h4>🧪 Testar Endpoint (Requer Autenticação)</h4>
+                        <h4>Testar Endpoint (Requer Autenticação)</h4>
                         <div class="test-controls">
                             <button class="test-button" onclick="testAdminProfessionals()">Testar GET /api/admin/professionals</button>
                         </div>
@@ -816,7 +853,7 @@ Content-Type: application/json
                     </div>
                     
                     <div class="test-panel">
-                        <h4>🧪 Testar Endpoint (Requer Autenticação)</h4>
+                        <h4>Testar Endpoint (Requer Autenticação)</h4>
                         <div class="test-controls">
                             <button class="test-button" onclick="testAdminSettings()">Testar GET /api/admin/settings</button>
                         </div>
